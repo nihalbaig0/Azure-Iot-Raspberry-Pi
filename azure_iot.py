@@ -5,9 +5,9 @@ from azure.iot.device import IoTHubDeviceClient, Message
 CONNECTION_STRING = "{Primary Connection String}"
 
 # Define the JSON message to send to IoT Hub.
-TEMPERATURE = "Pi"
-HUMIDITY = "Azure"
-MSG_TXT = '{{"From": {temperature},"To": {humidity}}}'
+From = "Pi"
+To = "Azure"
+MSG_TXT = '{{"From": {first},"To": {second}}}'
 
 def iothub_client_init():
     # Create an IoT Hub client
@@ -21,9 +21,9 @@ def iothub_client_telemetry_sample_run():
         print ( "IoT Hub device sending periodic messages, press Ctrl-C to exit" )
         while True:
             # Build the message with simulated telemetry values.
-            temperature = TEMPERATURE 
-            humidity = HUMIDITY 
-            msg_txt_formatted = MSG_TXT.format(temperature=temperature, humidity=humidity)
+            first = From
+            second = To
+            msg_txt_formatted = MSG_TXT.format(first=first, second=second)
             message = Message(msg_txt_formatted)
 
             # Send the message.
